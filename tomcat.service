@@ -1,0 +1,20 @@
+[Unit]
+Description=Tomcat9
+After=network.target
+ 
+[Service]
+Type=forking
+
+Environment="JAVA_HOME=/usr/local/importantsoft/jdk-11.0.5" 
+Environment="CATALINA_BASE=/usr/local/importantsoft/apache-tomcat-9.0.30" 
+Environment="CATALINA_HOME=/usr/local/importantsoft/apache-tomcat-9.0.30" 
+
+PIDFile=/usr/local/importantsoft/apache-tomcat-9.0.30/tomcat.pid
+ExecStart=/usr/local/importantsoft/apache-tomcat-9.0.30/bin/catalina.sh start
+ExecReload=/usr/local/importantsoft/apache-tomcat-9.0.30/bin/catalina.sh restart
+ExecStop=/usr/local/importantsoft/apache-tomcat-9.0.30/bin/catalina.sh stop
+
+SuccessExitStatus=143
+ 
+[Install]
+WantedBy=multi-user.target
